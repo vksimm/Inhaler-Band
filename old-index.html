@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inhaler</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="page-wrapper">
+            <div id="nav-bar" class="top-bar-wrapper">
+                <header class="top-bar">
+                    <img class="inhalerlogo" src="Images/inlogocrop.png" alt="Inhaler Logo">
+                    <nav class="top-menu">
+                        <div>
+                            <ul class="menu-items">
+                                <li class="menu-item">TOUR</li>
+                                <li class="menu-item">MERCH</li>
+                                <li class="menu-item">VIDEOS</li>
+                                <li class="menu-item">MUSIC</li>
+                                <li class="menu-item">CONNECT</li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+            </div>    
+            <div class="container">
+                <img src="Images/inhaler-bwcrop.png" alt="Inhaler Picture" class="responsiveinhalerpic">
+                <div class="text1">
+                    <p>CUTS & BRUISES <span class="out-now-wrapper">OUT NOW</span></p>
+                </div>
+            </div>
+
+            <div class="albums-wrapper">
+                <div class="album-item album-item-left">
+                    <img src="Images/inhaler-tour-1.jpg" alt="It Won't Always Be Like This Album" class="album-image">
+                    <div class="album-text-wrapper">
+                        <span class="album-text">
+                            <h2 class="tour-title">Title</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu fermentum augue. Proin massa nisi, aliquet sagittis orci sit amet, ornare eleifend lorem. Maecenas in tincidunt dui, bibendum consequat massa. Nunc et luctus augue. Nulla ut erat sapien. Fusce dapibus fermentum ligula at iaculis. Donec consequat fringilla orci in efficitur. Praesent id leo elementum, malesuada ante id, accumsan nibh. Sed luctus tellus tellus, eget laoreet lectus viverra in. Nam vitae risus nec quam scelerisque malesuada ac non ipsum. Curabitur aliquet est commodo est interdum, euismod efficitur arcu convallis.
+                            </p>
+                            <p>
+                                Praesent mollis odio at urna tristique pharetra. Vivamus auctor consequat sem vel malesuada. Aliquam erat volutpat. Aliquam imperdiet quam enim, id tincidunt justo condimentum vitae. Etiam eget dictum nisi. Praesent congue rhoncus volutpat. Phasellus dictum sit amet ex nec vestibulum. Aliquam tempor, quam in ultrices gravida, turpis augue sodales ligula, eu tristique eros dolor sit amet tortor. Duis ligula massa, pretium eget ullamcorper a, elementum non mauris. Curabitur elementum elit ut ligula blandit pellentesque id et erat.
+                            </p>   
+                            <div class="tickets">TICKETS</div> 
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="albums-wrapper">
+                <div class="album-item album-item-right">
+                    <div class="album-text-wrapper">
+                        <span class="album-text">
+                            <h2 class="tour-title">Meme</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu fermentum augue. Proin massa nisi, aliquet sagittis orci sit amet, ornare eleifend lorem. Maecenas in tincidunt dui, bibendum consequat massa. Nunc et luctus augue. Nulla ut erat sapien. Fusce dapibus fermentum ligula at iaculis. Donec consequat fringilla orci in efficitur. Praesent id leo elementum, malesuada ante id, accumsan nibh. Sed luctus tellus tellus, eget laoreet lectus viverra in. Nam vitae risus nec quam scelerisque malesuada ac non ipsum. Curabitur aliquet est commodo est interdum, euismod efficitur arcu convallis.
+                                </p>
+                        </span>
+                        <div class="flex-break"></div>
+                        <div class="tickets">
+                            TICKETS
+                        </div> 
+                    </div>
+                    <img src="Images/inhaler-tour-1.jpg" alt="It Won't Always Be Like This Album" class="album-image">
+                </div>
+            </div>
+            <footer>
+                <div class="sm-wrapper">
+                    <a href="https://www.instagram.com/inhalerdublin" target="_blank">
+                        <img class="sm-icon" src="Images/instagram (1).png" alt="Instagram">
+                    </a>
+                    <img class="sm-icon" src="Images/twitter.png" alt="Twitter">
+                    <img class="sm-icon" src="Images/spotify-blue.png" alt="Spotify">  
+                </div>
+                <div class="copyright">
+                    &copy; Copyright Polydor Records
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
+
+<script>
+    var scrollTimeout = 50;
+    var scrollEventPending = false;
+    var pendingScrollEvent = null;
+    var lastScrollEvent = Date.now() - scrollTimeout;
+
+    function onScrollEvent(event) {
+        lastScrollEvent = Date.now();
+        scrollEventPending = false;
+
+        let scrollPosition = window.pageYOffset == null ? 0 : window.pageYOffset;
+        if (scrollPosition == 0) {
+            document.getElementById("nav-bar").classList.remove("top-bar-wrapper-scrolled");
+        } else {
+            document.getElementById("nav-bar").classList.add("top-bar-wrapper-scrolled");
+        }
+    }
+
+    window.addEventListener("scroll", (event) => {
+        if (scrollEventPending) {
+            return;
+        }
+        
+        let now = Date.now();
+        if (lastScrollEvent + scrollTimeout <= now) {
+            onScrollEvent(event);
+        } else {
+            scrollEventPending = true;
+            pendingScrollEvent = setTimeout(onScrollEvent, (lastScrollEvent + scrollTimeout) - now, event);
+        }
+    });
+</script>

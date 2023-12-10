@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inhaler</title>
+        <link rel="icon" type="image/jpeg" href="https://m.media-amazon.com/images/I/81vI8D+fjfL._UF894,1000_QL80_.jpg">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="page-wrapper">
+            <div id="nav-bar" class="top-bar-wrapper">
+                <header class="top-bar">
+                    <img class="inhalerlogo" src="Images/inlogocrop.png" alt="Inhaler Logo">
+                    <div class="hamburger-menu" onclick="toggleMenu()">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </div>
+
+                    <nav id="top-menu" class="top-menu">
+                        <ul class="menu-items">
+                            <li class="menu-item">TOUR</li>
+                            <li class="menu-item">MERCH</li>
+                            <li class="menu-item">VIDEOS</li>
+                            <li class="menu-item">MUSIC</li>
+                            <li class="menu-item">CONNECT</li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>    
+            <div class="container">
+                <img src="Images/inhaler-bwcrop.png" alt="Inhaler Picture" class="responsiveinhalerpic">
+                <div class="text1">
+                    <p>CUTS & BRUISES <span class="out-now-wrapper">OUT NOW</span></p>
+                </div>
+            </div>
+
+            <div class="albums-wrapper">
+                <div class="album-item album-item-left">
+                    <img src="Images/inhaler-tour-1.jpg" alt="It Won't Always Be Like This Album" class="album-image">
+                    <div class="album-text-wrapper">
+                        <span class="album-text">
+                            <h2 class="tour-title">Title</h2>
+                            <p class="tour-info">
+                                INHALER BLACKPOOL EMPRESS BALLROOM. TICKETS ON SALE 9:30AM (GMT). Inhaler Blackpool Empress Ballroom. Tickets on sale 9:30am (GMT).<br><br> Plus special guest David Hale!
+                            </p>
+                        </span>
+                        <div class="flex-break"></div>
+                        <div class="tickets">TICKETS</div> 
+                    </div>
+                </div>
+            </div>
+            <div class="albums-wrapper">
+                <div class="album-item album-item-right">
+                    <img src="Images/inhaler-tour-2.jpg" alt="It Won't Always Be Like This Album" class="album-image">
+                    <div class="album-text-wrapper">
+                        <span class="album-text">
+                            <h2 class="tour-title">Meme</h2>
+                            <p class="tour-info">
+                                INHALER LIVE AT 02 ACDEMY, GLASGOW
+                            </p>
+                        </span>
+                        <div class="flex-break"></div>
+                        <div class="tickets">
+                            TICKETS
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="sm-wrapper">
+                    <a href="https://www.instagram.com/inhalerdublin" target="_blank">
+                        <img class="sm-icon" src="Images/instagram (1).png" alt="Instagram">
+                    </a>
+                    <a href="https://www.instagram.com/inhalerdublin" target="_blank">
+                        <img class="sm-icon" src="Images/twitter.png" alt="Twitter">
+                    </a>
+                    <a href="https://www.instagram.com/inhalerdublin" target="_blank">
+                        <img class="sm-icon" src="Images/spotify-blue.png" alt="Spotify">  
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; Copyright Polydor Records
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
+
+
+<!-- SOURCED JAVASCRIPT -->
+
+
+<script>
+    var menuExpanded = false;
+
+    function toggleMenu() {
+        menuExpanded = !menuExpanded;
+
+        let hamburgerLines = document.getElementsByClassName("line");
+        for (let i = 0; i < hamburgerLines.length; i = i + 1) {
+            const element = hamburgerLines[i];
+            let className = `line${i + 1}-expanded`;
+            if (menuExpanded) {
+                element.classList.add(className);
+            } else {
+                element.classList.remove(className);
+            }
+        }
+
+        let menu = document.getElementById("top-menu");
+        let className = "top-menu-expanded";
+        if (menuExpanded) {
+            menu.classList.add(className);
+        } else {
+            menu.classList.remove(className);
+        }
+    }
+</script>
+
+
+<script>
+    var scrollTimeout = 50;
+    var scrollEventPending = false;
+    var pendingScrollEvent = null;
+    var lastScrollEvent = Date.now() - scrollTimeout;
+
+    function onScrollEvent(event) {
+        lastScrollEvent = Date.now();
+        scrollEventPending = false;
+
+        let scrollPosition = window.pageYOffset == null ? 0 : window.pageYOffset;
+        if (scrollPosition == 0) {
+            document.getElementById("nav-bar").classList.remove("top-bar-wrapper-scrolled");
+        } else {
+            document.getElementById("nav-bar").classList.add("top-bar-wrapper-scrolled");
+        }
+    }
+
+    window.addEventListener("scroll", (event) => {
+        if (scrollEventPending) {
+            return;
+        }
+        
+        let now = Date.now();
+        if (lastScrollEvent + scrollTimeout <= now) {
+            onScrollEvent(event);
+        } else {
+            scrollEventPending = true;
+            pendingScrollEvent = setTimeout(onScrollEvent, (lastScrollEvent + scrollTimeout) - now, event);
+        }
+    });
+</script>
